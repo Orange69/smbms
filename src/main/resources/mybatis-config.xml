@@ -5,9 +5,17 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-config.dtd"> 
 <configuration>
 <properties resource="database.properties"></properties>
-<!-- 配置运行环境
-  default：默认  必须指定一个默认的运行环境
- -->
+    <!--为pojo取别名，简化返回值类型-->
+    <!--<typeAliases>-->
+        <!--<typeAlias type="com.githup.mybatis.pojo.User" alias="user"></typeAlias>-->
+    <!--</typeAliases>-->
+    <!--会自动地找这个包下的所有pojo，为这个实体类取别名，就是类名，不区分大小写-->
+    <typeAliases>
+        <package name="com.githup.mybatis.pojo"/>
+    </typeAliases>
+    <!-- 配置运行环境
+      default：默认  必须指定一个默认的运行环境
+     -->
 <environments default="deverlment">
    <!-- 某一套运行环境 id:为这套运行环境起个名字 -->
    <environment id="deverlment">
@@ -27,7 +35,8 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 </environments>
 <!-- 配置mapper映射文件 -->
 <mappers>
-<mapper resource="com\githup\mybatis\pojo\mapper.xml"/>
+    <!--系统会自动地扫描dao下的所有配置文件-->
+<package name="com.githup.mybatis.dao"/>
 </mappers>
 </configuration>
 

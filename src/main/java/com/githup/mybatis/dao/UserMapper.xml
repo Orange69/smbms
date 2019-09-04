@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.githup.mybatis.dao.UserMapper">
+   <!--List<User> findUser()-->
+    <select id="findUser" resultType="user">
+        select * from smbms_user
+    </select>
+    <!--User findUserByUserName(String name);模糊查询-->
+    <!--parameterType：入参类型-->
+    <select id="findUserByUserName" resultType="user" parameterType="String">
+        select * from smbms_user where userName like Concat('%',#{name},'%')
+    </select>
+    <!--User findUserByUserNameAndUserRole(User user);根据角色id和用户名进行查询用户-->
+    <!--参数可以直接使用对象中的字段获取-->
+    <select id="findUserByUserNameAndUserRole" resultType="user" parameterType="user">
+        select  * from smbms_user where  userName like Concat('%',#{userName},'%') and userRole=#{userRole}
+    </select>
+    <!--根据map集合来查询用用户信息：User findUserByMap(Map<String, Object> map);-->
+    <!--map集合参数根据键获取值-->
+    <select id="findUserByMap" resultType="user" parameterType="map">
+          select  * from smbms_user where  userName like Concat('%',#{userName},'%') and userRole=#{userRole}
+    </select>
+    <!--     User findUserByUserNameAndUserRole1(@Param("userName")String name ,@Param("userRole")int role );-->
+    <!--只要使注解入参，就不用写入参类型-->
+    <!--多表联查，内连接，左外连接，右外连接，子查询-->
+    <select id="findUserByUserNameAndUserRole1" resultType="user">
+                select *,(select roleName from smbms_role where id=#{userRole})
+                   from  smbms_user
+                      where userName like Concat('%',#{userName},'%') and userRole=#{userRole}
+    </select>
+</mapper>

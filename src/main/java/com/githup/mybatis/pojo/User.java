@@ -3,13 +3,7 @@ package com.githup.mybatis.pojo;
 import java.util.Date;
 
 public class User {
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", userCode=" + userCode + ", userName=" + userName + ", userPassword=" + userPassword
-				+ ", gender=" + gender + ", birthday=" + birthday + ", phone=" + phone + ", address=" + address
-				+ ", userRole=" + userRole + ", createdBy=" + createdBy + ", creationDate=" + creationDate
-				+ ", modifyBy=" + modifyBy + ", modifyDate=" + modifyDate + "]";
-	}
+
 	private Integer id; //id 
 	private String userCode; //用户编码
 	private String userName; //用户名称
@@ -23,7 +17,37 @@ public class User {
 	private Date creationDate; //创建时间
 	private Integer modifyBy;     //更新者
 	private Date modifyDate;   //更新时间
-	
+
+	private  String roleName;
+
+	@Override
+	public String toString() {
+		return "User{" +
+				"id=" + id +
+				", userCode='" + userCode + '\'' +
+				", userName='" + userName + '\'' +
+				", userPassword='" + userPassword + '\'' +
+				", gender=" + gender +
+				", birthday=" + birthday +
+				", phone='" + phone + '\'' +
+				", address='" + address + '\'' +
+				", userRole=" + userRole +
+				", createdBy=" + createdBy +
+				", creationDate=" + creationDate +
+				", modifyBy=" + modifyBy +
+				", modifyDate=" + modifyDate +
+				", roleName='" + roleName + '\'' +
+				'}';
+	}
+
+	public String getRoleName() {
+		return roleName;
+	}
+
+	public void setRoleName(String roleName) {
+		this.roleName = roleName;
+	}
+
 	public Integer getId() {
 		return id;
 	}

@@ -18,6 +18,7 @@ public static void main(String[] args) {
 		
 		//执行查询用户的操作  获取list类型的列表
 		List<User> selectList = sqlSession.selectList("userMapper.findUser");
+
 		for (User user : selectList) {
 			System.out.println(user);
 		}

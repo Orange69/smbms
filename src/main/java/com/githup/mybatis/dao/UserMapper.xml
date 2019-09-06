@@ -30,4 +30,33 @@
                    from  smbms_user
                       where userName like Concat('%',#{userName},'%') and userRole=#{userRole}
     </select>
+    <resultMap id="userList" type="user">
+        <!--用来提升映射性能-->
+        <id property="id" column="id"></id>
+        <result column="roleName" property="userRoleName"></result>
+    </resultMap>
+    <!--findUserByUserNameAndUserRole2-->
+    <select id="findUserByUserNameAndUserRole2" resultMap="userList">
+         select su.*,sr.roleName from smbms_user su,smbms_role sr
+                   where sr.id=su.userRole
+                       and userName like Concat('%',#{userName},'%')
+                          and su.userRole=#{userRole}
+    </select>
+    <!--int addUser();-->
+    <!--增删改不用写返回值类型-->
+    <insert id="addUser">
+        insert into smbms_user(userCode,userName,userPassword,gender,birthday,phone,address,userRole,createdBy,creationDate,modifyBy,modifyDate)
+            values("admin","盖轶轩","1234567",1,"1999-10-10","13688889999","北京市海淀区成府路207号",1,1,now(),1,now())
+    </insert>
+
+    <!--int updateUserNameAndUserCode();根据用户名修改-->
+    <update id="updateUserNameAndUserCode">
+        update smbms_user set userCode=#{userCode},userName=#{userName} where id=#{id}
+    </update>
+
+    <!--int deleteUserByUserName();-->
+    <!--根据姓名删除-->
+    <delete id="deleteUserByUserName">
+        delete from smbms_user where userName=#{userName};
+    </delete>
 </mapper>

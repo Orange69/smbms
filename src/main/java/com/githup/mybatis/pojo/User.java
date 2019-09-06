@@ -18,7 +18,7 @@ public class User {
 	private Integer modifyBy;     //更新者
 	private Date modifyDate;   //更新时间
 
-	private  String roleName;
+	private  String userRoleName;
 
 	@Override
 	public String toString() {
@@ -36,16 +36,16 @@ public class User {
 				", creationDate=" + creationDate +
 				", modifyBy=" + modifyBy +
 				", modifyDate=" + modifyDate +
-				", roleName='" + roleName + '\'' +
+				", userRoleName='" + userRoleName + '\'' +
 				'}';
 	}
 
 	public String getRoleName() {
-		return roleName;
+		return userRoleName;
 	}
 
 	public void setRoleName(String roleName) {
-		this.roleName = roleName;
+		this.userRoleName = userRoleName;
 	}
 
 	public Integer getId() {

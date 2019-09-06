@@ -30,4 +30,20 @@ public interface UserMapper {
    * 根据姓名和id查询用户信息
    * */
     User findUserByUserNameAndUserRole1(@Param("userName")String name ,@Param("userRole")int role );
+    /*
+    根据用户名和角色id来查询用户
+     */
+    User findUserByUserNameAndUserRole2(@Param("userName") String name,@Param("userRole") int role);
+  /*
+  增加用户信息
+   */
+    int addUser();
+    /*
+    根据用户名修改
+     */
+    int updateUserNameAndUserCode(User user);
+   /*
+   根据姓名删除用户
+    */
+    int deleteUserByUserName(String name);
 }
